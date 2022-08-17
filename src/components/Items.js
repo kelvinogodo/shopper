@@ -1,18 +1,17 @@
 import React from 'react'
 import Item from './Item'
 import { Swiper, SwiperSlide } from "swiper/react";
-import pic1 from './assets/beautiful-handbag-10-removebg-preview.png'
-import pic4 from './assets/shirt.png'
-import pic5 from './assets/watch-removebg-preview.png'
-import pic2 from './assets/mnssrn-mm-winter-high-top-outdoor-shoes-plus-velvet-to-keep-warm-non-slip-wear-resistant-and-comfortable-hiking-boots-female-hiking-shoes-removebg-preview.png'
-import pic3 from './assets/pams-removebg-preview.png'
+import AddForm from './AddForm';
+import { useContext } from 'react'
+import GlobalContext from '../Context'
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 // import "./styles.css";
 import { Pagination } from "swiper";
-const Items = ({items, checkId, toggleBtn, onDelete,onShow,like}) => {
+const Items = () => {
+  const {showAddForm,deleteItem,filtered} = useContext(GlobalContext)
   return (
     <main>
       <div className=''>
@@ -32,12 +31,12 @@ const Items = ({items, checkId, toggleBtn, onDelete,onShow,like}) => {
             <button>explore</button>
           </div>
           <div className="slider-img-container">
-          <img src={pic1} alt="" className='slider-img' />
+          <img src='images/beautiful-handbag-10-removebg-preview.png' alt="" className='slider-img' />
           </div>
         </SwiperSlide>
         <SwiperSlide className='slide'>
           <div className="slider-img-container">
-            <img src={pic2} alt="" className='slider-img' />
+            <img src='images/can.png' alt="" className='slider-img' />
           </div>
           <div className="land-text">
               <h5>
@@ -56,12 +55,12 @@ const Items = ({items, checkId, toggleBtn, onDelete,onShow,like}) => {
             <button>explore</button>
           </div>
           <div className="slider-img-container">
-          <img src={pic3} alt="" className='slider-img' />
+          <img src='images/pams-removebg-preview.png' alt="" className='slider-img' />
           </div>
         </SwiperSlide >
         <SwiperSlide className='slide'>
           <div className="slider-img-container">
-              <img src={pic4} alt="" className='slider-img' />
+              <img src='images/shirt.png' alt="" className='slider-img' />
             </div>
             <div className="land-text">
                 <h5>
@@ -80,16 +79,15 @@ const Items = ({items, checkId, toggleBtn, onDelete,onShow,like}) => {
             <button>explore</button>
           </div>
           <div className="slider-img-container">
-          <img src={pic5} alt="" className='slider-img' />
+          <img src='images/watch-removebg-preview.png' alt="" className='slider-img' />
           </div>
         </SwiperSlide >
       </Swiper>
       </div>
       <section className='items-container'>
-          {items.map(item =>(<Item key={item.id} like={like} item= {item} checkId={checkId} toggleBtn={toggleBtn} onDelete={()=>onDelete(item.id)} onShow={onShow}/>))  }    
+          {filtered.map(item =>(<Item key={item.id} item= {item} onDelete={()=>deleteItem(item.id)} />))  }    
       </section>
     </main>
-    
   )
 }
 

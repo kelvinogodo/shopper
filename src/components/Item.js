@@ -1,20 +1,22 @@
 import React from 'react'
-import Shoe2 from './assets/beautiful-handbag-10-removebg-preview.png'
 import {AiOutlineDelete} from 'react-icons/ai'
 import {MdOutlineModeEdit} from 'react-icons/md'
 import {AiTwotoneHeart} from 'react-icons/ai'
 import {BsCart4} from 'react-icons/bs'
 import {MdOutlineAdd} from 'react-icons/md'
 import {BsSearch} from 'react-icons/bs'
-const Bag = ({item, checkId, onDelete, onShow,like}) => {
+import { useContext } from 'react'
+import GlobalContext from '../Context'
+const Item = ({item,onDelete}) => {
+  const {like,checkId,showEditForm} = useContext(GlobalContext)
   return (
     <div className='item'>
         <AiTwotoneHeart className={item.liked ? 'liked' : 'unliked'} onClick={()=>like(item.id)}/>
         <div className='item-btn-container'>
           <AiOutlineDelete  className="delete-btn" onClick={onDelete} />
-          <MdOutlineModeEdit deEdit className='edit-btn' onClick={()=>onShow(item.id)} /> 
+          <MdOutlineModeEdit deEdit className='edit-btn' onClick={()=>showEditForm(item.id)} /> 
         </div>
-        <img src={`${Shoe2}`} alt="" />
+        <img src={`images/${item.image}`} alt="" />
         <div className="item-info">
             <p>{item.name}</p>
             <small className='prize'> {`prize: $ ${item.prize}`}</small>
@@ -25,4 +27,4 @@ const Bag = ({item, checkId, onDelete, onShow,like}) => {
   )
 }
 
-export default Bag
+export default Item

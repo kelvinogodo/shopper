@@ -4,7 +4,10 @@ import {BsFillCartCheckFill} from 'react-icons/bs'
 import {GrAdd} from 'react-icons/gr'
 import {FaShopify} from 'react-icons/fa'
 import SearchItems from './SearchItems'
-const Header = ({onShow,onSearch,carts,showCart}) => {
+import { useContext } from 'react'
+import GlobalContext from '../Context'
+const Header = () => {
+  const {carts,showForm,toggleCartDisplay,onSearch,showAddForm} = useContext(GlobalContext)
   return (
    <header>
        <small className="logo">
@@ -16,8 +19,8 @@ const Header = ({onShow,onSearch,carts,showCart}) => {
          {carts.length !== 0 && <small className="item-number">
            {carts.length}
          </small>}
-       <GrAdd text= 'add new item' onClick={onShow} className='add-btn'/>
-       <BsFillCartCheckFill className='head-cart' onClick={showCart}/>
+       <GrAdd text= 'add new item' onClick={showForm} className='add-btn'/>
+       <BsFillCartCheckFill className='head-cart' onClick={toggleCartDisplay}/>
        </div>
    </header>
   )

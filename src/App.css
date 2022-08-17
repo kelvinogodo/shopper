@@ -30,8 +30,8 @@ h5{
   left: 2%;
   filter: drop-shadow(0px 0px 5px rgb(213, 213, 213));
   cursor: pointer; 
-  opacity: 0;
-  transition: all ease .3s;
+  /* opacity: 0; */
+  transition: all ease .1s;
 }
 .unliked{
   font-size: 35px;
@@ -41,8 +41,8 @@ h5{
   left: 2%;
   filter: drop-shadow(0px 0px 1px black);
   cursor: pointer;
-  transition: all ease .3s;
-  opacity: 0;
+  transition: all ease .1s;
+  /* opacity: 0; */
 }
 .logo{
   font-size: 30px;
@@ -232,7 +232,6 @@ h1{
   position: absolute;
   bottom: 3%;
   right: 3%;
-  opacity: 0;
   transition: all ease .3s;
 }
 .add-item-btn:hover{
@@ -313,6 +312,7 @@ h1{
  display: flex;
  align-items: center;
  justify-content: center;
+ top: 0;
 }
 .add-form{
   width: 500px;

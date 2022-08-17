@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
 import {FaShopify} from 'react-icons/fa'
 import {AiOutlineClose} from 'react-icons/ai'
-
-const EditForm = ({items,onEdit,closeForm,setEditedData}) => {
+import { useContext } from 'react'
+import GlobalContext from '../Context'
+const EditForm = ({onEdit,closeForm,setEditedData}) => {
+    const {items} = useContext(GlobalContext)
     const [newName,setNewName]=useState()
     const [newPrize,setNewPrize]=useState()
     const [newId,setNewId]=useState()

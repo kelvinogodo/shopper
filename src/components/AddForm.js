@@ -1,15 +1,17 @@
 import React, {useState} from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
 import {FaShopify} from 'react-icons/fa'
-const AddForm = ({closeForm, onAdd}) => {
-
+import { useContext } from 'react'
+import GlobalContext from '../Context'
+const AddForm = () => {
+    const {addItem,closeForm} =useContext(GlobalContext)
     const [name,setName]=useState()
     const [prize,setPrize]=useState()
     const [id,setid]=useState()
 
     const onSubmit=(e)=>{
         e.preventDefault()
-        onAdd({name,prize,id})
+        addItem({name,prize,id})
         setName('')
         setPrize ('')
         setid('')   
