@@ -6,8 +6,9 @@ import {FaShopify} from 'react-icons/fa'
 import SearchItems from './SearchItems'
 import { useContext } from 'react'
 import GlobalContext from '../Context'
+import {FaUserCircle} from 'react-icons/fa'
 const Header = () => {
-  const {carts,showForm,toggleCartDisplay,onSearch,showAddForm} = useContext(GlobalContext)
+  const {carts,showForm,toggleCartDisplay,onSearch} = useContext(GlobalContext)
   return (
    <header>
        <small className="logo">
@@ -19,8 +20,9 @@ const Header = () => {
          {carts.length !== 0 && <small className="item-number">
            {carts.length}
          </small>}
-       <GrAdd text= 'add new item' onClick={showForm} className='add-btn'/>
-       <BsFillCartCheckFill className='head-cart' onClick={toggleCartDisplay}/>
+       <GrAdd onClick={showForm} className='add-btn icon'/>
+       <FaUserCircle className='user-icon icon'/>
+       <BsFillCartCheckFill className='head-cart icon' onClick={toggleCartDisplay}/>
        </div>
    </header>
   )
